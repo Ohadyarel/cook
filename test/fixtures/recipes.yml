@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  publisher: MyString
+  ingredients: 
+  source_url: MyString
+  image_url: MyString
+  social_rank: 1.5
+  title: MyString
+
+two:
+  publisher: MyString
+  ingredients: 
+  source_url: MyString
+  image_url: MyString
+  social_rank: 1.5
+  title: MyString
