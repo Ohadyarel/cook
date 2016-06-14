@@ -4,7 +4,8 @@
 		<ul id="oils_list">
 			<% pantry_default[:oils].each do |ing| %>
 				<li>
-					<%= ing %> <span class="delete_ing">X</span>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
 		</ul>
@@ -20,7 +21,8 @@
 		<ul id="seasonings_list">
 			<% pantry_default[:seasonings].each do |ing| %>
 				<li>
-					<%= ing %> <span class="delete_ing">X</span>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
 		</ul>
@@ -36,7 +38,8 @@
 		<ul id="cans_list">
 			<% pantry_default[:cans].each do |ing| %>
 				<li>
-					<%= ing %> <span class="delete_ing">X</span>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
 		</ul>
@@ -52,7 +55,8 @@
 		<ul id="grains_list">
 			<% pantry_default[:grains].each do |ing| %>
 				<li>
-					<%= ing %> <span class="delete_ing">X</span>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
 		</ul>
@@ -68,7 +72,8 @@
 		<ul id="baking_list">
 			<% pantry_default[:baking].each do |ing| %>
 				<li>
-					<%= ing %> <span class="delete_ing">X</span>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
 		</ul>
@@ -84,7 +89,8 @@
 		<ul id="refrigerator_list">
 			<% pantry_default[:refrigerator].each do |ing| %>
 				<li>
-					<%= ing %> <span class="delete_ing">X</span>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
 		</ul>
@@ -100,7 +106,8 @@
 		<ul id="freezer_list">
 			<% pantry_default[:freezer].each do |ing| %>
 				<li>
-					<%= ing %> <span class="delete_ing">X</span>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
 		</ul>
@@ -116,7 +123,8 @@
 		<ul id="storage_list">
 			<% pantry_default[:storage].each do |ing| %>
 				<li>
-					<%= ing %> <span class="delete_ing">X</span>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
 		</ul>
@@ -132,7 +140,8 @@
 		<ul id="fresh_list">
 			<% pantry_default[:fresh].each do |ing| %>
 				<li>
-					<%= ing %> <span class="delete_ing">X</span>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
 		</ul>
@@ -140,5 +149,9 @@
 			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
 		</div>
 	</div>
+</div>
+
+<div class="search_button">
+	SEARCH
 </div>
 

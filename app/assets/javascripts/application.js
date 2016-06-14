@@ -23,8 +23,8 @@ $(document).ready(function(){
 		if (e.which == 13) {
 			var ing = $(this).val()
 			var id = $(this).parent().parent().parent().attr('id')
-			$('#'+id+'_list').append('<li>'+ing+' <span class="delete_ing new_delete">X</span></li>')
-			$(this).val("")
+			$('#'+id+'_list').append('<li><span class="ing">'+ing+'</span> <span class="delete_ing new_delete">X</span></li>')
+			$(this).val('')
 			// Create the delete click event for the new list item span tag
 			$('.new_delete').click(function(){
 				$(this).parent().remove()
@@ -34,6 +34,19 @@ $(document).ready(function(){
 	// Remove item from a specific pantry_list
 	$('.delete_ing').click(function(){
 		$(this).parent().remove()
+	})
+
+	function pantryArray(){
+		var pantryArr = []
+		var pantry = $('.pantry_section').find('.ing')
+		for (i=0; i<pantry.length; i++) {
+			pantryArr.push(pantry[i].innerText)
+		}
+		return pantryArr
+	}
+
+	$('.search_button').click(function(){
+		console.log(pantryArray())
 	})
 
 })
