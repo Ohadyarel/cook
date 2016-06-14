@@ -56,4 +56,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  namespace :api do
+    resources :recipes, only: [:index,:show]
+  end
 end

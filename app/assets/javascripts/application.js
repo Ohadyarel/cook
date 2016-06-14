@@ -18,6 +18,7 @@
 $(document).ready(function(){
 
 	// PANTRY 
+
 	// Grabing the value of pantry_input and adding it to the a specific pantry_list
 	$('.pantry_input').keypress(function(e){
 		if (e.which == 13) {
@@ -31,22 +32,88 @@ $(document).ready(function(){
 			})
     }
 	})
+
 	// Remove item from a specific pantry_list
 	$('.delete_ing').click(function(){
 		$(this).parent().remove()
 	})
 
+	// Grab the content of all .ing in the _pantry and push it to a new array
 	function pantryArray(){
 		var pantryArr = []
-		var pantry = $('.pantry_section').find('.ing')
-		for (i=0; i<pantry.length; i++) {
-			pantryArr.push(pantry[i].innerText)
+		var temp_pantry = $('.pantry_section').find('.ing')
+		for (i=0; i<temp_pantry.length; i++) {
+			pantryArr.push(temp_pantry[i].innerText)
 		}
 		return pantryArr
 	}
 
+	//search through each word in the ingredient string and see if it matches one of the words in the pantry array
+  function searchPantry(ingredient) {
+  	var pantry = pantryArray()
+    for (p=0; p<pantry.length; p++) {
+    	// console.log(ingredient.search(pantry[p].toLowerCase()))
+      if (ingredient.search(pantry[p].toLowerCase()) != -1) {
+        return true
+      }
+    }
+  }
+
+  //shows the recipe to the user
+  function display(recipe) {
+    $('#test').append('<p>'+ recipe.title + '</p>')
+  }
+
+	//Invokes the searchPantry function on each ingredient in a recipe and checks for a full match 
+  function filter(recipe) {
+    var ingredients = recipe.ingredients;
+    var match = 0;
+    for (i=0;i<ingredients.length;i++) {
+      if (searchPantry(ingredients[i].toLowerCase())) { 
+        match = match + 1;
+      }
+    }
+    console.log(match)
+    if (match == ingredients.length) {
+      display(recipe)
+    }
+    // console.log(recipe.id + ': ' + match + ' vs ' + ingredients.length)
+  }
+
+	// api call to get a recipe by it's id and invoke the filter function
+	function recipeShow(recipe_id){
+    $.ajax ({
+      type: "GET",
+      url: "http://localhost:3000/api/recipes/" + recipe_id,
+      data: {},
+      success: function (response) {
+        // var recipe = JSON.parse(response)
+        filter(response)
+      }
+    })
+  }
+
+  // api call to get all the recipes, grab their ids and invoke recipeShow
+	function recipeIndex() {
+  	$.ajax ({
+  		type: "GET",
+      url: "http://localhost:3000/api/recipes",
+      success: function (response) { 
+      	// console.log(response)
+      	// var data = JSON.parse(response)
+        for (i=0;i<response.length;i++) {
+          recipeShow(response[i].id)
+      	}
+      }
+  	})
+  }
+
+	// Click event on search button to invoke pantryArray
 	$('.search_button').click(function(){
-		console.log(pantryArray())
+		recipeIndex()
 	})
+
+
+	
 
 })
