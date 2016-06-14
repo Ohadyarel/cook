@@ -14,3 +14,26 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+
+	// PANTRY 
+	// Grabing the value of pantry_input and adding it to the a specific pantry_list
+	$('.pantry_input').keypress(function(e){
+		if (e.which == 13) {
+			var ing = $(this).val()
+			var id = $(this).parent().parent().parent().attr('id')
+			$('#'+id+'_list').append('<li>'+ing+' <span class="delete_ing new_delete">X</span></li>')
+			$(this).val("")
+			// Create the delete click event for the new list item span tag
+			$('.new_delete').click(function(){
+				$(this).parent().remove()
+			})
+    }
+	})
+	// Remove item from a specific pantry_list
+	$('.delete_ing').click(function(){
+		$(this).parent().remove()
+	})
+
+})
