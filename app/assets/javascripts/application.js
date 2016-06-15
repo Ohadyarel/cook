@@ -78,17 +78,6 @@ $(document).ready(function(){
     }
   }
 
-	// api call to get a recipe by it's id and invoke the filter function
-	function recipeShow(recipe_id){
-    $.ajax ({
-      type: "GET",
-      url: "http://localhost:3000/api/recipes/" + recipe_id,
-      success: function (response) {
-        filter(response);
-      }
-    })
-  }
-
   // api call to get all the recipes, grab their ids and invoke recipeShow
 	function recipeIndex() {
   	$.ajax ({
@@ -96,8 +85,7 @@ $(document).ready(function(){
       url: "http://localhost:3000/api/recipes",
       success: function (response) { 
         for (i=0;i<response.length;i++) {
-        	match = 0;
-          recipeShow(response[i].id);
+          filter(response[i]);
       	}
       }
   	})

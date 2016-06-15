@@ -7,10 +7,10 @@ class ApplicationController < ActionController::Base
   def pantry_default
   	{
   		oils: ["Olive oil", "Vegetable oil", "Balsamic vinegar", "White vinegar", "Red vinegar","Soy sauce", "Ketchup", "Mayonnaise", "Dijon mustard","Worcestershire", "Hot sauce"],
-  		seasonings: ["Salt", "Black pepper", "Bay leaves", "Cayenne pepper", "Red pepper flakes", "Cumin", "Oregano", "Paprika", "Rosemary", "Thyme", "Cinnamon", "Nutmeg", "Chili powder", "Curry powder", "Vanilla extract"],
+  		seasonings: ["Salt", "Black pepper", "Bay leaves", "Cayenne pepper", "Red pepper flakes", "Cumin", "Oregano", "Paprika", "Rosemary", "Thyme", "Cinnamon", "Nutmeg", "Chili powder", "Curry powder"],
   		cans: ["Canned beans", "Capers", "Olives", "Peanut butter", "Chicken stock", "Tomato paste", "Salsa", "Canned Tuna"],
   		grains: ["Breadcrumbs", "Couscous", "Pasta", "Rice", "Dried lentils"],
-  		baking: ["Baking powder", "Baking soda", "Brown sugar", "Cornstarch", "All-purpose flour", "Honey"],
+  		baking: ["Baking powder", "Baking soda", "Brown sugar", "Cornstarch", "All-purpose flour", "Honey", "Vanilla extract"],
   		refrigerator: ["Butter", "Parmesan", "Eggs", "Milk", "Yogurt"],
   		freezer: ["Frozen broccoli", "Frozen corn", "Frozen peas", "Frozen spinach"],
   		storage: ["Garlic", "Onion", "Potato", "Peanuts"],
