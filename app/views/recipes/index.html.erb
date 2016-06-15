@@ -1,5 +1,9 @@
 <div id="home">
-	<%= render partial: "pantry" %>
+	<% if logged_in? and current_user.pantry != nil %>
+		<%= render partial: "user_pantry" %>
+	<% else %>
+		<%= render partial: "pantry" %>
+	<% end %>
 	<div id="test">
 		
 	</div>

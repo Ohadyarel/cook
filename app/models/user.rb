@@ -6,8 +6,6 @@ class User < ActiveRecord::Base
 	validates :email, uniqueness: { case_sensitive: false }
 	serialize :pantry
 
-	attr_accessor :pantry
-
 	has_many :favorites
 	has_many :recipes, through: :favorites
 end

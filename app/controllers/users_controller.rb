@@ -33,14 +33,17 @@ class UsersController < ApplicationController
 
 	def update
 		@user = current_user
+		puts "anflvandlfjnvaldfjnvlajndflvjanfdljvnaldfjnvaldjfnvlajfv"
+		puts params.inspect
+		puts "anflvandlfjnvaldfjnvlajndflvjanfdljvnaldfjnvaldjfnvlajfv"
+
 		if params[:user][:password] != params[:user][:password_confirmation]
       flash[:alert] = "Sorry! The passwords did not match"
-      redirect_to(:back)
     else
 			@user.update(user_params)
 			flash[:notice] = "User updated"
-			redirect_to user_path(@user)
 		end
+		redirect_to :back
 	end
 
 	def destroy
@@ -53,6 +56,6 @@ class UsersController < ApplicationController
 
 	private
 	def user_params
-		params.require(:user).permit(:name, :password, :email)
+		params.require(:user).permit(:name, :password, :email, :pantry)
 	end
 end

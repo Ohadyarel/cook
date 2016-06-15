@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
 	def create
-		@user = User.where(username: params[:username]).first
+		@user = User.where(email: params[:email]).first
 		if @user && @user.authenticate(params[:password])
 			log_in(@user)
 			flash[:notice] = "logged in"
-			redirect_to user_path(@user)
+			redirect_to recipes_path
 		else
 			flash[:alert] = "log in failed"
 			redirect_to :back
