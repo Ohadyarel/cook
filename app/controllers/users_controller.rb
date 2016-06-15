@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(user_params)
-		@user.pantry = pantry_default
 		# check that the passwords match
 		if params[:user][:password] != params[:user][:password_confirmation]
       flash[:alert] = "Sorry! The passwords did not match"
@@ -19,7 +18,9 @@ class UsersController < ApplicationController
 			if @user.save
 				flash[:notice] = "User created succesfully"
 				log_in(@user)
-				redirect_to root_path
+				setup_categories(@user)
+				setup_pantry(@user)
+				redirect_to recipes_path
 			else
 				flash[:alert] = "Something went wrong"
 				redirect_to(:back)

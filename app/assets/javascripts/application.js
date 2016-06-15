@@ -48,13 +48,6 @@ $(document).ready(function(){
 		return pantryArr
 	}
 
-	// save pantry array to current_user.pantry
-	// set value of #pantry_hidden_field to pantryArray()
-	$('#pantry_save_submit').click(function(){
-		$('#pantry_hidden_field').val(pantryArray())
-		console.log($('#pantry_hidden_field').val())
-	})
-
 	//search through each word in the ingredient string and see if it matches one of the words in the pantry array
   function searchPantry(ingredient) {
   	var pantry = pantryArray()
