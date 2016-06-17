@@ -1,10 +1,10 @@
-<div class="pantry_section" id="oils">
+<div class="pantry_section" id="1">
 	<h2>Oils, Vinegars and Condiments</h2>
 	<div class="pantry_list">
-		<ul id="oils_list">
-			<% pantry_default[:oils].each do |ing| %>
+		<ul id="1_list">
+			<% @ingredients.joins(:categories).where(categories:{id:1}).each do |ing| %>
 				<li>
-					<span class="ing"><%= ing %></span> 
+					<span class="ing"><%= ing.name %></span> 
 					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
@@ -14,14 +14,13 @@
 		</div>
 	</div>
 </div>
-
-<div class="pantry_section" id="seasonings">
+<div class="pantry_section" id="2">
 	<h2>Seasonings</h2>
 	<div class="pantry_list">
-		<ul id="seasonings_list">
-			<% pantry_default[:seasonings].each do |ing| %>
+		<ul id="2_list">
+			<% @ingredients.joins(:categories).where(categories:{id:2}).each do |ing| %>
 				<li>
-					<span class="ing"><%= ing %></span> 
+					<span class="ing"><%= ing.name %></span> 
 					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
@@ -32,13 +31,13 @@
 	</div>
 </div>
 
-<div class="pantry_section" id="cans">
+<div class="pantry_section" id="3">
 	<h2>Canned Goods and Bottled Items</h2>
 	<div class="pantry_list">
-		<ul id="cans_list">
-			<% pantry_default[:cans].each do |ing| %>
+		<ul id="3_list">
+			<% @ingredients.joins(:categories).where(categories:{id:3}).each do |ing| %>
 				<li>
-					<span class="ing"><%= ing %></span> 
+					<span class="ing"><%= ing.name %></span> 
 					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
@@ -49,13 +48,13 @@
 	</div>
 </div>
 
-<div class="pantry_section" id="grains">
+<div class="pantry_section" id="4">
 	<h2>Grains and Legumes</h2>
 	<div class="pantry_list">
-		<ul id="grains_list">
-			<% pantry_default[:grains].each do |ing| %>
+		<ul id="4_list">
+			<% @ingredients.joins(:categories).where(categories:{id:4}).each do |ing| %>
 				<li>
-					<span class="ing"><%= ing %></span> 
+					<span class="ing"><%= ing.name %></span> 
 					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
@@ -66,13 +65,13 @@
 	</div>
 </div>
 
-<div class="pantry_section" id="baking">
+<div class="pantry_section" id="5">
 	<h2>Baking Products</h2>
 	<div class="pantry_list">
-		<ul id="baking_list">
-			<% pantry_default[:baking].each do |ing| %>
+		<ul id="5_list">
+			<% @ingredients.joins(:categories).where(categories:{id:5}).each do |ing| %>
 				<li>
-					<span class="ing"><%= ing %></span> 
+					<span class="ing"><%= ing.name %></span> 
 					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
@@ -83,13 +82,13 @@
 	</div>
 </div>
 
-<div class="pantry_section" id="refrigerator">
+<div class="pantry_section" id="6">
 	<h2>Refrigerator Basics</h2>
 	<div class="pantry_list">
-		<ul id="refrigerator_list">
-			<% pantry_default[:refrigerator].each do |ing| %>
+		<ul id="6_list">
+			<% @ingredients.joins(:categories).where(categories:{id:6}).each do |ing| %>
 				<li>
-					<span class="ing"><%= ing %></span> 
+					<span class="ing"><%= ing.name %></span> 
 					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
@@ -100,13 +99,13 @@
 	</div>
 </div>
 
-<div class="pantry_section" id="freezer">
+<div class="pantry_section" id="7">
 	<h2>Freezer Basics</h2>
 	<div class="pantry_list">
-		<ul id="freezer_list">
-			<% pantry_default[:freezer].each do |ing| %>
+		<ul id="7_list">
+			<% @ingredients.joins(:categories).where(categories:{id:7}).each do |ing| %>
 				<li>
-					<span class="ing"><%= ing %></span> 
+					<span class="ing"><%= ing.name %></span> 
 					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
@@ -117,13 +116,13 @@
 	</div>
 </div>
 
-<div class="pantry_section" id="storage">
+<div class="pantry_section" id="8">
 	<h2>Storage Produce</h2>
 	<div class="pantry_list">
-		<ul id="storage_list">
-			<% pantry_default[:storage].each do |ing| %>
+		<ul id="8_list">
+			<% @ingredients.joins(:categories).where(categories:{id:8}).each do |ing| %>
 				<li>
-					<span class="ing"><%= ing %></span> 
+					<span class="ing"><%= ing.name %></span> 
 					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
@@ -134,13 +133,13 @@
 	</div>
 </div>
 
-<div class="pantry_section" id="fresh">
+<div class="pantry_section" id="9">
 	<h2>Fresh Produce</h2>
 	<div class="pantry_list">
-		<ul id="fresh_list">
-			<% pantry_default[:fresh].each do |ing| %>
+		<ul id="9_list">
+			<% @ingredients.joins(:categories, :users).where(categories:{id:9}, users:{id:current_user.id}).each do |ing| %>
 				<li>
-					<span class="ing"><%= ing %></span> 
+					<span class="ing"><%= ing.name %></span> 
 					<span class="delete_ing">X</span>
 				</li>
 			<% end %>
@@ -149,14 +148,14 @@
 			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
 		</div>
 	</div>
+
 </div>
 
 <div class="search_button">
 	SEARCH
 </div>
 
-<%= form_for @user do |f| %>
-	<%= f.hidden_field :pantry, id:"pantry_hidden_field"%>
-	<%= f.submit "SAVE PANTRY", id:"pantry_save_submit" %>
-<% end %>
+<div class="save_button">
+	SAVE
+</div>
 

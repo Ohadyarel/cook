@@ -154,10 +154,3 @@
 <div class="search_button">
 	SEARCH
 </div>
-
-<% if logged_in? %>
-	<%= form_for @user do |f| %>
-		<%= f.hidden_field :pantry, id:"pantry_hidden_field"%>
-		<%= f.submit "SAVE PANTRY", id:"pantry_save_submit" %>
-	<% end %>
-<% end %>

@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   resources :user_ingredients
   resources :ingredient_categories
   resources :categories
-  resources :ingredients
   resources :recipes, only: [:index, :show]
   resources :favorites, only: [:create, :destroy]
   resources :users
@@ -64,5 +63,6 @@ Rails.application.routes.draw do
   #   end
   namespace :api do
     resources :recipes, only: [:index,:show]
+    resources :ingredients, only:[:create,:destroy]
   end
 end

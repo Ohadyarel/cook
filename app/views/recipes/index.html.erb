@@ -1,5 +1,5 @@
 <div id="home">
-	<% if logged_in? and current_user.pantry != nil %>
+	<% if logged_in? %>
 		<%= render partial: "user_pantry" %>
 	<% else %>
 		<%= render partial: "pantry" %>

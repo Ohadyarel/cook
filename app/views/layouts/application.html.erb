@@ -8,7 +8,7 @@
 </head>
 <body>
 	<% if !logged_in? %>
-		<%= form_tag sessions_path do%>
+		<%= form_tag sessions_path do %>
 			<%=text_field_tag :email, nil, :placeholder=>"Email", id: "login_username" %>
 			<%=password_field_tag :password, nil, :placeholder=> "Password", id: "login_pass" %>
 			<%=submit_tag "Log in", id:"login_button" %>

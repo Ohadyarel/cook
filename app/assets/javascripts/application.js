@@ -17,17 +17,44 @@
 
 $(document).ready(function(){
 
-	// PANTRY 
+	// ======== PANTRY ========== //
+
+  // setting up arrays to store changes made to the pantry
+  var ingAdded = [];
+  var ingRemoved = [];
+
+  // SAVE PANTRY 
+  // add the ingredients in ingAdded to the UserIngredient and IngredientCategory models
+  function addIngredient(data) {
+    $.post('api/ingredients', {ing:data})
+  }
+
+  // remove the ingredients in ingRemoved to the UserIngredient and IngredientCategory models
+  function removeIngredient(data) {
+    $.ajax ({
+      url: "api/ingredients/1",
+      type: "DELETE",
+      data: {ing:data},
+      success: function (response) { 
+        console.log(response)
+      }
+    })
+  }
+
 
 	// Grabing the value of pantry_input and adding it to the a specific pantry_list
 	$('.pantry_input').keypress(function(e){
 		if (e.which == 13) {
 			var ing = $(this).val()
 			var id = $(this).parent().parent().parent().attr('id')
+      ingAdded.push({category_id: id,ingredient: ing})
 			$('#'+id+'_list').append('<li><span class="ing">'+ing+'</span> <span class="delete_ing new_delete">X</span></li>')
 			$(this).val('')
 			// Create the delete click event for the new list item span tag
 			$('.new_delete').click(function(){
+        var ingDel = $(this).parent().find('.ing')
+        var idDel = $(this).parent().parent().parent().parent().attr('id')
+        ingRemoved.push({category_id: idDel,ingredient: ingDel[0].innerText})
 				$(this).parent().remove()
 			})
     }
@@ -35,15 +62,18 @@ $(document).ready(function(){
 
 	// Remove item from a specific pantry_list
 	$('.delete_ing').click(function(){
+    var ingDel = $(this).parent().find('.ing')
+    var idDel = $(this).parent().parent().parent().parent().attr('id')
+    ingRemoved.push({category_id: idDel,ingredient: ingDel[0].innerText})
 		$(this).parent().remove()
 	})
 
 	// Grab the content of all .ing in the _pantry and push it to a new array
 	function pantryArray(){
 		var pantryArr = []
-		var temp_pantry = $('.pantry_section').find('.ing')
-		for (var i=0; i<temp_pantry.length; i++) {
-			pantryArr.push(temp_pantry[i].innerText)
+		var tempPantry = $('.pantry_section').find('.ing')
+		for (var i=0; i<tempPantry.length; i++) {
+			pantryArr.push(tempPantry[i].innerText)
 		}
 		return pantryArr
 	}
@@ -82,9 +112,9 @@ $(document).ready(function(){
 	function recipeIndex() {
   	$.ajax ({
   		type: "GET",
-      url: "http://localhost:3000/api/recipes",
+      url: "api/recipes",
       success: function (response) { 
-        for (i=0;i<response.length;i++) {
+        for (var i=0; i<response.length; i++) {
           filter(response[i]);
       	}
       }
@@ -96,7 +126,21 @@ $(document).ready(function(){
 		recipeIndex()
 	})
 
-
+  // run functions to populate ingredient and join tables via ajax
+  $('.save_button').click(function(){
+    if (ingAdded != []) {
+      for (var i=0; i<ingAdded.length; i++) {
+        addIngredient(ingAdded[i])
+      }
+    }
+    if (ingRemoved != []) {
+      for (var i=0; i<ingRemoved.length; i++) {
+        removeIngredient(ingRemoved[i])
+      }
+    }
+    ingAdded = [];
+    ingRemoved = [];
+  })
 	
 
 })

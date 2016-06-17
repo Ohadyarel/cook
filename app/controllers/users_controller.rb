@@ -18,7 +18,6 @@ class UsersController < ApplicationController
 			if @user.save
 				flash[:notice] = "User created succesfully"
 				log_in(@user)
-				setup_categories(@user)
 				setup_pantry(@user)
 				redirect_to recipes_path
 			else
@@ -49,7 +48,9 @@ class UsersController < ApplicationController
 
 	def destroy
 		@user = current_user
-		@user.favorites.destroy
+		@user.favorites.destroy_all
+		@user.user_categories.destroy_all
+		@user.user_ingredients.destroy_all
 		@user.destroy
 		log_out
 		redirect_to root_path
