@@ -8,6 +8,12 @@
 		<% end %>
 	</ul>
 	<%= link_to "View directions", @recipe.source_url %>
-
+	<% if logged_in? %>
+		<% if !@favorite %>
+			<%= button_to "Favorite", favorites_path(recipe_id: @recipe.id) %>
+		<% else %>
+			<%= button_to "UnFavorite", favorite_path(@favorite), method: :delete %>
+		<% end %>
+	<% end %>
 
 </div>
