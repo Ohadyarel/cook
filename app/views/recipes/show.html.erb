@@ -1,4 +1,13 @@
 <div id="recipe_show">
-	
+	<%= @recipe.title %>
+	<%= @recipe.publisher %>
+	<%= image_tag @recipe.image_url %>
+	<ul>
+		<% @recipe.ingredients.each do |ing| %>
+			<li><%= ing %></li>
+		<% end %>
+	</ul>
+	<%= link_to "View directions", @recipe.source_url %>
+
 
 </div>

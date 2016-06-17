@@ -29,6 +29,7 @@ module UsersHelper
 		end
 	end
 
+	# Goes through the users ingredients and places them in the appropriate category
 	def display_pantry
 		pantry_hash = {1=>[],2=>[],3=>[],4=>[],5=>[],6=>[],7=>[],8=>[],9=>[]}
 		ingredients = current_user.user_ingredients
