@@ -19,17 +19,13 @@ $(document).ready(function(){
 
 	// ======== PANTRY ========== //
 
-  // setting up arrays to store changes made to the pantry
-  var ingAdded = [];
-  var ingRemoved = [];
-
   // SAVE PANTRY 
-  // add the ingredients in ingAdded to the UserIngredient and IngredientCategory models
+  // add ingredient to the UserIngredient model
   function addIngredient(data) {
     $.post('api/ingredients', {ing:data})
   }
 
-  // remove the ingredients in ingRemoved to the UserIngredient and IngredientCategory models
+  // remove ingredient from the UserIngredient model
   function removeIngredient(data) {
     $.ajax ({
       url: "api/ingredients/1",
@@ -47,14 +43,14 @@ $(document).ready(function(){
 		if (e.which == 13) {
 			var ing = $(this).val()
 			var id = $(this).parent().parent().parent().attr('id')
-      ingAdded.push({category_id: id,ingredient: ing})
+      addIngredient({category_id: id,ingredient: ing})
 			$('#'+id+'_list').append('<li><span class="ing">'+ing+'</span> <span class="delete_ing new_delete">X</span></li>')
 			$(this).val('')
 			// Create the delete click event for the new list item span tag
 			$('.new_delete').click(function(){
         var ingDel = $(this).parent().find('.ing')
         var idDel = $(this).parent().parent().parent().parent().attr('id')
-        ingRemoved.push({category_id: idDel,ingredient: ingDel[0].innerText})
+        removeIngredient({category_id: idDel,ingredient: ingDel[0].innerText})
 				$(this).parent().remove()
 			})
     }
@@ -64,11 +60,11 @@ $(document).ready(function(){
 	$('.delete_ing').click(function(){
     var ingDel = $(this).parent().find('.ing')
     var idDel = $(this).parent().parent().parent().parent().attr('id')
-    ingRemoved.push({category_id: idDel,ingredient: ingDel[0].innerText})
+    removeIngredient({category_id: idDel,ingredient: ingDel[0].innerText})
 		$(this).parent().remove()
 	})
 
-	// Grab the content of all .ing in the _pantry and push it to a new array
+	// Grab the content of all .ing in the _pantry/_user_pantry and push it to a new array
 	function pantryArray(){
 		var pantryArr = []
 		var tempPantry = $('.pantry_section').find('.ing')
@@ -97,6 +93,12 @@ $(document).ready(function(){
   function filter(recipe) {
 	  var match = 0;
     var ingredients = recipe.ingredients;
+    // removing certain "ingredients" because of the structure of the api
+    for (var i=0; i<ingredients.length; i++) {
+      if (ingredients[i] == "_____") {
+        ingredients.splice(i,2)
+      }
+    }
     for (var i=0; i<ingredients.length; i++) {
       if (searchPantry(ingredients[i].toLowerCase()) == true) { 
         match++;
@@ -126,21 +128,6 @@ $(document).ready(function(){
 		recipeIndex()
 	})
 
-  // run functions to populate ingredient and join tables via ajax
-  $('.save_button').click(function(){
-    if (ingAdded != []) {
-      for (var i=0; i<ingAdded.length; i++) {
-        addIngredient(ingAdded[i])
-      }
-    }
-    if (ingRemoved != []) {
-      for (var i=0; i<ingRemoved.length; i++) {
-        removeIngredient(ingRemoved[i])
-      }
-    }
-    ingAdded = [];
-    ingRemoved = [];
-  })
 	
 
 })

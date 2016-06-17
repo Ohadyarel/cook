@@ -1,7 +1,6 @@
 class RecipesController < ApplicationController
 	def index
-		# @user = current_user
-		@ingredients = current_user.ingredients if logged_in?
+		@pantry = display_pantry if logged_in?
 	end
 
 	def show

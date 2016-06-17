@@ -29,4 +29,17 @@ module UsersHelper
 		end
 	end
 
+	def display_pantry
+		pantry_hash = {1=>[],2=>[],3=>[],4=>[],5=>[],6=>[],7=>[],8=>[],9=>[]}
+		ingredients = current_user.user_ingredients
+		ingredients.length.times do |i|
+			9.times do |num|
+				if ingredients[i].category_id == num+1
+					pantry_hash[num+1] << ingredients[i].ingredient.name
+				end
+			end
+		end
+		pantry_hash
+	end
+
 end
