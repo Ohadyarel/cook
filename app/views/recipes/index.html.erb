@@ -1,9 +1,15 @@
 <div id="home">
-	<% if logged_in? %>
-		<%= render partial: "user_pantry" %>
-	<% else %>
-		<%= render partial: "pantry" %>
-	<% end %>
+	<div id="pantry_wrapper">
+		<% if logged_in? %>
+			<%= render partial: "user_pantry" %>
+		<% else %>
+			<%= render partial: "pantry" %>
+		<% end %>
+	</div>
+	<div class="pantry_button">
+		<h2>Open Your Pantry</h2>
+		<span class="glyphicon glyphicon-menu-down"></span>
+	</div>
 	<div id="test">
 		
 	</div>

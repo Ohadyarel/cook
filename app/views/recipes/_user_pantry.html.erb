@@ -1,5 +1,7 @@
 <div class="pantry_section" id="1">
-	<h2>Oils, Vinegars and Condiments</h2>
+	<div class="pantry_header">
+		<h2>Oils, Vinegars and Condiments</h2>
+	</div>
 	<div class="pantry_list">
 		<ul id="1_list">
 			<% @pantry[1].each do |ing| %>
@@ -15,7 +17,9 @@
 	</div>
 </div>
 <div class="pantry_section" id="2">
-	<h2>Seasonings</h2>
+	<div class="pantry_header">
+		<h2>Seasonings</h2>
+	</div>
 	<div class="pantry_list">
 		<ul id="2_list">
 			<% @pantry[2].each do |ing| %>
@@ -32,7 +36,9 @@
 </div>
 
 <div class="pantry_section" id="3">
-	<h2>Canned Goods and Bottled Items</h2>
+	<div class="pantry_header">
+		<h2>Canned Goods and Bottled Items</h2>
+	</div>
 	<div class="pantry_list">
 		<ul id="3_list">
 			<% @pantry[3].each do |ing| %>
@@ -49,7 +55,9 @@
 </div>
 
 <div class="pantry_section" id="4">
-	<h2>Grains and Legumes</h2>
+	<div class="pantry_header">
+		<h2>Grains and Legumes</h2>
+	</div>
 	<div class="pantry_list">
 		<ul id="4_list">
 			<% @pantry[4].each do |ing| %>
@@ -66,7 +74,9 @@
 </div>
 
 <div class="pantry_section" id="5">
-	<h2>Baking Products</h2>
+	<div class="pantry_header">
+		<h2>Baking Products</h2>
+	</div>
 	<div class="pantry_list">
 		<ul id="5_list">
 			<% @pantry[5].each do |ing| %>
@@ -83,7 +93,9 @@
 </div>
 
 <div class="pantry_section" id="6">
-	<h2>Refrigerator Basics</h2>
+	<div class="pantry_header">
+		<h2>Refrigerator Basics</h2>
+	</div>
 	<div class="pantry_list">
 		<ul id="6_list">
 			<% @pantry[6].each do |ing| %>
@@ -100,7 +112,9 @@
 </div>
 
 <div class="pantry_section" id="7">
-	<h2>Freezer Basics</h2>
+	<div class="pantry_header">
+		<h2>Freezer Basics</h2>
+	</div>
 	<div class="pantry_list">
 		<ul id="7_list">
 			<% @pantry[7].each do |ing| %>
@@ -117,7 +131,9 @@
 </div>
 
 <div class="pantry_section" id="8">
-	<h2>Storage Produce</h2>
+	<div class="pantry_header">
+		<h2>Storage Produce</h2>
+	</div>
 	<div class="pantry_list">
 		<ul id="8_list">
 			<% @pantry[8].each do |ing| %>
@@ -134,7 +150,9 @@
 </div>
 
 <div class="pantry_section" id="9">
-	<h2>Fresh Produce</h2>
+	<div class="pantry_header">
+		<h2>Fresh Produce</h2>
+	</div>
 	<div class="pantry_list">
 		<ul id="9_list">
 			<% @pantry[9].each do |ing| %>
@@ -152,10 +170,6 @@
 </div>
 
 <div class="search_button">
-	SEARCH
+	<h2 class="search_title">Search</h2>
+	<span class="glyphicon glyphicon-menu-up"></span>
 </div>
-
-<div class="save_button">
-	SAVE
-</div>
-

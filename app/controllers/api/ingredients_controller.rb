@@ -16,8 +16,8 @@ module API
 				end
       else
 				ingredient = Ingredient.new(name: params[:ing][:ingredient].capitalize)
-        user_ing = UserIngredient.new(ingredient_id: ingredient.id, user_id: current_user.id, category_id: params[:ing][:category_id])
-        if ingredient.save and user_ing.save
+        if ingredient.save
+	        user_ing = UserIngredient.create(ingredient_id: ingredient.id, user_id: current_user.id, category_id: params[:ing][:category_id])
 	        render json: ingredient, status: 201, location: [:api, ingredient]
 	      end
 	    end

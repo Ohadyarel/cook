@@ -74,6 +74,8 @@ $(document).ready(function(){
 		return pantryArr
 	}
 
+  // ======== SEARCH ========== //
+
 	//search through each word in the ingredient string and see if it matches one of the words in the pantry array
   function searchPantry(ingredient) {
   	var pantry = pantryArray()
@@ -124,10 +126,31 @@ $(document).ready(function(){
   }
 
 	// Click event on search button to invoke pantryArray
-	$('.search_button').click(function(){
+	$('.search_title').click(function(){
 		recipeIndex()
+    $('#pantry_wrapper').slideUp();
+    $('.pantry_button').fadeIn(200);
 	})
 
 	
+  // ======== INDEX#RECIPE ========== //
 
-})
+  $('#home').fadeIn(1000);
+
+  $('.pantry_section').fadeIn(500);
+
+  $('.pantry_header').click(function(){
+    $(this).parent().find('.pantry_list').slideToggle();
+  });
+
+  $('.glyphicon-menu-down').click(function(){
+    $('#pantry_wrapper').slideDown();
+    $('.pantry_button').fadeOut(200);
+  });
+
+  $('.glyphicon-menu-up').click(function(){
+    $('#pantry_wrapper').slideUp();
+    $('.pantry_button').fadeIn(200);
+  });
+
+});
