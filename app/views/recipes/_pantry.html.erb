@@ -1,156 +1,220 @@
-<div class="pantry_section" id="oils">
-	<h2>Oils, Vinegars and Condiments</h2>
-	<div class="pantry_list">
-		<ul id="oils_list">
-			<% pantry_default[:oils].each do |ing| %>
-				<li>
-					<span class="ing"><%= ing %></span> 
-					<span class="delete_ing">X</span>
-				</li>
-			<% end %>
-		</ul>
-		<div class="pantry_form">
-			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
-		</div>
-	</div>
-</div>
-
-<div class="pantry_section" id="seasonings">
-	<h2>Seasonings</h2>
-	<div class="pantry_list">
-		<ul id="seasonings_list">
-			<% pantry_default[:seasonings].each do |ing| %>
-				<li>
-					<span class="ing"><%= ing %></span> 
-					<span class="delete_ing">X</span>
-				</li>
-			<% end %>
-		</ul>
-		<div class="pantry_form">
-			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
-		</div>
-	</div>
-</div>
-
-<div class="pantry_section" id="cans">
-	<h2>Canned Goods and Bottled Items</h2>
-	<div class="pantry_list">
-		<ul id="cans_list">
-			<% pantry_default[:cans].each do |ing| %>
-				<li>
-					<span class="ing"><%= ing %></span> 
-					<span class="delete_ing">X</span>
-				</li>
-			<% end %>
-		</ul>
-		<div class="pantry_form">
-			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
-		</div>
-	</div>
-</div>
-
-<div class="pantry_section" id="grains">
-	<h2>Grains and Legumes</h2>
-	<div class="pantry_list">
-		<ul id="grains_list">
-			<% pantry_default[:grains].each do |ing| %>
-				<li>
-					<span class="ing"><%= ing %></span> 
-					<span class="delete_ing">X</span>
-				</li>
-			<% end %>
-		</ul>
-		<div class="pantry_form">
-			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
-		</div>
-	</div>
-</div>
-
-<div class="pantry_section" id="baking">
-	<h2>Baking Products</h2>
-	<div class="pantry_list">
-		<ul id="baking_list">
-			<% pantry_default[:baking].each do |ing| %>
-				<li>
-					<span class="ing"><%= ing %></span> 
-					<span class="delete_ing">X</span>
-				</li>
-			<% end %>
-		</ul>
-		<div class="pantry_form">
-			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
-		</div>
-	</div>
-</div>
-
-<div class="pantry_section" id="refrigerator">
-	<h2>Refrigerator Basics</h2>
-	<div class="pantry_list">
-		<ul id="refrigerator_list">
-			<% pantry_default[:refrigerator].each do |ing| %>
-				<li>
-					<span class="ing"><%= ing %></span> 
-					<span class="delete_ing">X</span>
-				</li>
-			<% end %>
-		</ul>
-		<div class="pantry_form">
-			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
-		</div>
-	</div>
-</div>
-
-<div class="pantry_section" id="freezer">
-	<h2>Freezer Basics</h2>
-	<div class="pantry_list">
-		<ul id="freezer_list">
-			<% pantry_default[:freezer].each do |ing| %>
-				<li>
-					<span class="ing"><%= ing %></span> 
-					<span class="delete_ing">X</span>
-				</li>
-			<% end %>
-		</ul>
-		<div class="pantry_form">
-			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
-		</div>
-	</div>
-</div>
-
-<div class="pantry_section" id="storage">
-	<h2>Storage Produce</h2>
-	<div class="pantry_list">
-		<ul id="storage_list">
-			<% pantry_default[:storage].each do |ing| %>
-				<li>
-					<span class="ing"><%= ing %></span> 
-					<span class="delete_ing">X</span>
-				</li>
-			<% end %>
-		</ul>
-		<div class="pantry_form">
-			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
-		</div>
-	</div>
-</div>
-
 <div class="pantry_section" id="fresh">
-	<h2>Fresh Produce</h2>
+	<div class="pantry_header">
+		<h2>Fresh Produce</h2>
+	</div>
 	<div class="pantry_list">
 		<ul id="fresh_list">
 			<% pantry_default[:fresh].each do |ing| %>
 				<li>
 					<span class="ing"><%= ing %></span> 
-					<span class="delete_ing">X</span>
+					<span class="delete_ing glyphicon glyphicon-remove"></span>
 				</li>
 			<% end %>
 		</ul>
-		<div class="pantry_form">
-			<input type"text" placeholder="Add ingredient and press enter" class="pantry_input">
+		<div class="col-lg-6">
+			<div class="pantry_form input-group">
+				<input type"text" placeholder="Add ingredient and press enter" class="pantry_input form-control">
+				<span class="input-group-btn">
+					<span class="btn btn-default glyphicon glyphicon-plus add_ing"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pantry_section" id="storage">
+	<div class="pantry_header">
+		<h2>Storage Produce</h2>
+	</div>
+	<div class="pantry_list">
+		<ul id="storage_list">
+			<% pantry_default[:storage].each do |ing| %>
+				<li>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing glyphicon glyphicon-remove"></span>
+				</li>
+			<% end %>
+		</ul>
+		<div class="col-lg-6">
+			<div class="pantry_form input-group">
+				<input type"text" placeholder="Add ingredient and press enter" class="pantry_input form-control">
+				<span class="input-group-btn">
+					<span class="btn btn-default glyphicon glyphicon-plus add_ing"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pantry_section" id="refrigerator">
+	<div class="pantry_header">
+		<h2>Refrigerator Basics</h2>
+	</div>
+	<div class="pantry_list">
+		<ul id="refrigerator_list">
+			<% pantry_default[:refrigerator].each do |ing| %>
+				<li>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing glyphicon glyphicon-remove"></span>
+				</li>
+			<% end %>
+		</ul>
+		<div class="col-lg-6">
+			<div class="pantry_form input-group">
+				<input type"text" placeholder="Add ingredient and press enter" class="pantry_input form-control">
+				<span class="input-group-btn">
+					<span class="btn btn-default glyphicon glyphicon-plus add_ing"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pantry_section" id="freezer">
+	<div class="pantry_header">
+		<h2>Freezer Basics</h2>
+	</div>
+	<div class="pantry_list">
+		<ul id="freezer_list">
+			<% pantry_default[:freezer].each do |ing| %>
+				<li>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing glyphicon glyphicon-remove"></span>
+				</li>
+			<% end %>
+		</ul>
+		<div class="col-lg-6">
+			<div class="pantry_form input-group">
+				<input type"text" placeholder="Add ingredient and press enter" class="pantry_input form-control">
+				<span class="input-group-btn">
+					<span class="btn btn-default glyphicon glyphicon-plus add_ing"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pantry_section" id="cans">
+	<div class="pantry_header">
+		<h2>Canned Goods and Bottled Items</h2>
+	</div>
+	<div class="pantry_list">
+		<ul id="cans_list">
+			<% pantry_default[:cans].each do |ing| %>
+				<li>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing glyphicon glyphicon-remove"></span>
+				</li>
+			<% end %>
+		</ul>
+		<div class="col-lg-6">
+			<div class="pantry_form input-group">
+				<input type"text" placeholder="Add ingredient and press enter" class="pantry_input form-control">
+				<span class="input-group-btn">
+					<span class="btn btn-default glyphicon glyphicon-plus add_ing"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pantry_section" id="grains">
+	<div class="pantry_header">
+		<h2>Grains and Legumes</h2>
+	</div>
+	<div class="pantry_list">
+		<ul id="grains_list">
+			<% pantry_default[:grains].each do |ing| %>
+				<li>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing glyphicon glyphicon-remove"></span>
+				</li>
+			<% end %>
+		</ul>
+		<div class="col-lg-6">
+			<div class="pantry_form input-group">
+				<input type"text" placeholder="Add ingredient and press enter" class="pantry_input form-control">
+				<span class="input-group-btn">
+					<span class="btn btn-default glyphicon glyphicon-plus add_ing"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pantry_section" id="baking">
+	<div class="pantry_header">
+		<h2>Baking Products</h2>
+	</div>
+	<div class="pantry_list">
+		<ul id="baking_list">
+			<% pantry_default[:baking].each do |ing| %>
+				<li>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing glyphicon glyphicon-remove"></span>
+				</li>
+			<% end %>
+		</ul>
+		<div class="col-lg-6">
+			<div class="pantry_form input-group">
+				<input type"text" placeholder="Add ingredient and press enter" class="pantry_input form-control">
+				<span class="input-group-btn">
+					<span class="btn btn-default glyphicon glyphicon-plus add_ing"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pantry_section" id="oils">
+	<div class="pantry_header">
+		<h2>Oils, Vinegars and Condiments</h2>
+	</div>
+	<div class="pantry_list">
+		<ul id="oils_list">
+			<% pantry_default[:oils].each do |ing| %>
+				<li>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing glyphicon glyphicon-remove"></span>
+				</li>
+			<% end %>
+		</ul>
+		<div class="col-lg-6">
+			<div class="pantry_form input-group">
+				<input type"text" placeholder="Add ingredient and press enter" class="pantry_input form-control">
+				<span class="input-group-btn">
+					<span class="btn btn-default glyphicon glyphicon-plus add_ing"></span>
+				</span>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="pantry_section" id="seasonings">
+	<div class="pantry_header">
+		<h2>Seasonings</h2>
+	</div>
+	<div class="pantry_list">
+		<ul id="seasonings_list">
+			<% pantry_default[:seasonings].each do |ing| %>
+				<li>
+					<span class="ing"><%= ing %></span> 
+					<span class="delete_ing glyphicon glyphicon-remove"></span>
+				</li>
+			<% end %>
+		</ul>
+		<div class="col-lg-6">
+			<div class="pantry_form input-group">
+				<input type"text" placeholder="Add ingredient and press enter" class="pantry_input form-control">
+				<span class="input-group-btn">
+					<span class="btn btn-default glyphicon glyphicon-plus add_ing"></span>
+				</span>
+			</div>
 		</div>
 	</div>
 </div>
 
 <div class="search_button">
-	SEARCH
+	<h2 class="search_title">Find Recipes</h2>
+	<span class="glyphicon glyphicon-menu-up"></span>
 </div>

@@ -17,7 +17,7 @@
 body {
 	margin: 0;
 	background: #CFD4CD;
-	color: #B34040;
+	color: #EE575B;
 	font-family: 'Arvo', serif;
 }
 
@@ -67,24 +67,71 @@ body {
 
 .pantry_header h2 {
 	font-size: 1.3em;
+	cursor: pointer;
 }
 
 .pantry_list {
-	background: #FFF4EB;
+	background: white;
 	display: none;
 }
 
 .pantry_list ul {
 	margin: 0;
+	list-style: none;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	padding-left: 8px;
+}
+
+.pantry_list ul li {
+	display: inline-block;
+	font-size: 1.1em;
+	margin: 5px 5px 0 0;
+	background: #393233;
+	color: #CFD4CD;
+	border-radius: 4px;
+	padding: 0 5px;
+}
+
+.delete_ing:hover {
+	color: #B34040;
+}
+
+.col-lg-6 {
+	padding-left: 0;
+	padding-bottom: 12px;
+}
+
+.pantry_form {
+	padding-left: 8px;
+}
+
+.pantry_input {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	height: 35px;
+}
+
+.add_ing {
+	margin-top: 9px;
+	margin-bottom: 5px;
+	background: #393233;
+	color: #CFD4CD;
+	height: 35px;
+	padding-left: 8px;
+	padding-right: 8px; 
+	cursor: pointer;
 }
 
 .search_button {
 	padding-left: 8px;
+	border-bottom: 1px solid white;
 }
 
 .search_button h2 {
 	margin-top: 10px;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .search_button span {
@@ -92,10 +139,12 @@ body {
 	margin: 15px;
 	font-size: 1.7em;
 	float: right;
+	cursor: pointer;
 }
 
 .pantry_button {
 	padding-left: 8px;
+	border-bottom: 1px solid white;
 	display: none;
 }
 
@@ -103,6 +152,7 @@ body {
 	margin-top: 10px;
 	color: #595A5A;
 	display: inline-block;
+	cursor: pointer;
 }
 
 .pantry_button span {
@@ -110,4 +160,46 @@ body {
 	margin: 15px;
 	font-size: 1.7em;
 	float: right;
+	cursor: pointer;
+}
+
+/*SEARCH RESULTS*/
+
+/* ---- grid ---- */
+.grid {
+	margin-left: 12px;
+  max-width: 1200px;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- grid-item ---- */
+.grid-item {
+	margin: 10px 5px;
+	background-repeat: no-repeat;
+	background-size: cover;
+  width: 365px;
+  height: 280px;
+  float: left;
+  cursor: pointer;
+  border: 5px solid #EE575B;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);
+}
+
+.grid-item:hover {
+	box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.7), 0px 0px 5px 0px rgba(0,0,0,0.7);
+}
+
+.grid-title {
+	background: rgba(57,50,51,0.7);
+	color: #CFD4CD;
+}
+
+.grid-title h3 {
+	padding-left: 5px;
 }

@@ -37,12 +37,12 @@ $(document).ready(function(){
     })
   }
 
-
+  // ADD AND REMOVE INGREDIENT
 	// Grabing the value of pantry_input and adding it to the a specific pantry_list
 	$('.pantry_input').keypress(function(e){
 		if (e.which == 13) {
 			var ing = $(this).val()
-			var id = $(this).parent().parent().parent().attr('id')
+			var id = $(this).parent().parent().parent().parent().attr('id')
       addIngredient({category_id: id,ingredient: ing})
 			$('#'+id+'_list').append('<li><span class="ing">'+ing+'</span> <span class="delete_ing new_delete">X</span></li>')
 			$(this).val('')
@@ -56,6 +56,22 @@ $(document).ready(function(){
     }
 	})
 
+  // add ing button
+  $('.add_ing').click(function(){
+    var ing = $(this).parent().parent().find('.pantry_input').val()
+    var id = $(this).parent().parent().parent().parent().parent().attr('id')
+    addIngredient({category_id: id,ingredient: ing})
+    $('#'+id+'_list').append('<li><span class="ing">'+ing+'</span> <span class="delete_ing new_delete">X</span></li>')
+    $(this).parent().parent().find('.pantry_input').val('')
+    // Create the delete click event for the new list item span tag
+    $('.new_delete').click(function(){
+      var ingDel = $(this).parent().find('.ing')
+      var idDel = $(this).parent().parent().parent().parent().attr('id')
+      removeIngredient({category_id: idDel,ingredient: ingDel[0].innerText})
+      $(this).parent().remove()
+    }) 
+  })
+
 	// Remove item from a specific pantry_list
 	$('.delete_ing').click(function(){
     var ingDel = $(this).parent().find('.ing')
@@ -64,17 +80,40 @@ $(document).ready(function(){
 		$(this).parent().remove()
 	})
 
-	// Grab the content of all .ing in the _pantry/_user_pantry and push it to a new array
-	function pantryArray(){
-		var pantryArr = []
-		var tempPantry = $('.pantry_section').find('.ing')
-		for (var i=0; i<tempPantry.length; i++) {
-			pantryArr.push(tempPantry[i].innerText)
-		}
-		return pantryArr
-	}
+  // ==== DISPLAY SEARCH RESULTS ==== //
 
-  // ======== SEARCH ========== //
+  // get image height
+  function imageHeight(url) {
+    var tempImg = new Image();
+    tempImg.src = url;
+    return tempImg.naturalHeight
+  }
+
+  // get image width
+  function imageWidth(url) {
+    var tempImg = new Image();
+    tempImg.src = url;
+    return tempImg.naturalWidth
+  }
+
+  //shows the recipe to the user
+  function display(recipe) {
+    $('.grid').append('<div class="grid-item" id="' + recipe.id + '"><div class="grid-title"><h3>'+ recipe.title + '</h3></div></div>');
+    $('#'+recipe.id).css('background-image','url("' + recipe.image_url + '")')
+    $('#'+recipe.id).css('height',imageHeight(recipe.image_url))
+  }
+
+  // =========== SEARCH ============= //
+
+  // Grab the content of all .ing in the _pantry/_user_pantry and push it to a new array
+  function pantryArray(){
+    var pantryArr = []
+    var tempPantry = $('.pantry_section').find('.ing')
+    for (var i=0; i<tempPantry.length; i++) {
+      pantryArr.push(tempPantry[i].innerText)
+    }
+    return pantryArr
+  }
 
 	//search through each word in the ingredient string and see if it matches one of the words in the pantry array
   function searchPantry(ingredient) {
@@ -86,13 +125,8 @@ $(document).ready(function(){
     }
   }
 
-  //shows the recipe to the user
-  function display(recipe) {
-    $('#test').append('<p>'+ recipe.title + '</p>')
-  }
-
 	//Invokes the searchPantry function on each ingredient in a recipe and checks for a full match 
-  function filter(recipe) {
+  function filterRecipe(recipe) {
 	  var match = 0;
     var ingredients = recipe.ingredients;
     // removing certain "ingredients" because of the structure of the api
@@ -108,7 +142,6 @@ $(document).ready(function(){
     }
     if (match == ingredients.length) {
       display(recipe)
-      console.log(ingredients)
     }
   }
 
@@ -119,8 +152,12 @@ $(document).ready(function(){
       url: "api/recipes",
       success: function (response) { 
         for (var i=0; i<response.length; i++) {
-          filter(response[i]);
+          filterRecipe(response[i]);
       	}
+        $('.grid').masonry({
+          itemSelector: '.grid-item',
+          columnWidth: 10
+        });
       }
   	})
   }
@@ -128,6 +165,7 @@ $(document).ready(function(){
 	// Click event on search button to invoke pantryArray
 	$('.search_title').click(function(){
 		recipeIndex()
+    $('.pantry_list').slideUp();
     $('#pantry_wrapper').slideUp();
     $('.pantry_button').fadeIn(200);
 	})
@@ -143,12 +181,13 @@ $(document).ready(function(){
     $(this).parent().find('.pantry_list').slideToggle();
   });
 
-  $('.glyphicon-menu-down').click(function(){
+  $('.pantry_button').click(function(){
     $('#pantry_wrapper').slideDown();
     $('.pantry_button').fadeOut(200);
   });
 
   $('.glyphicon-menu-up').click(function(){
+    $('.pantry_list').slideUp();
     $('#pantry_wrapper').slideUp();
     $('.pantry_button').fadeIn(200);
   });
