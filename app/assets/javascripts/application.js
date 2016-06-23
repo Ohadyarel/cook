@@ -96,11 +96,44 @@ $(document).ready(function(){
     return tempImg.naturalWidth
   }
 
-  //shows the recipe to the user
+  // ajax to favorite/unfavorite a recipe
+  function favoriteRecipe(recipe_id){
+    console.log('favorite')
+  }
+  // toggles the display of recipe modal and shadow
+  function modalHide() {
+    $('.modal_shadow').fadeOut(200);
+    $('.recipe_modal').fadeOut(300);
+  }
+  // populates the recipe modal
+  function recipeModal(recipe) {
+    $('.recipe_title > h3').text(recipe.title);
+    $('.recipe_title > span').click(function(){
+      modalHide();
+    })
+    $('.modal_shadow').click(function(){
+      modalHide();
+    })
+    $('.recipe_body > ul').html('')
+    for (var i=0; i<recipe.ingredients.length; i++) {
+      $('.recipe_body > ul').append('<li>'+ recipe.ingredients[i] +'</li>')
+    };
+    $('.recipe_body > a').attr('href',recipe.source_url);
+    $('.recipe_favorite').click(function(){
+      favoriteRecipe(recipe.id)
+    });
+    $('.modal_shadow').fadeIn(200);
+    $('.recipe_modal').fadeIn(300);
+  }
+
+  // shows the recipe to the user
   function display(recipe) {
     $('.grid').append('<div class="grid-item" id="' + recipe.id + '"><div class="grid-title"><h3>'+ recipe.title + '</h3></div></div>');
-    $('#'+recipe.id).css('background-image','url("' + recipe.image_url + '")')
-    $('#'+recipe.id).css('height',imageHeight(recipe.image_url))
+    $('#'+recipe.id).css('background-image','url("' + recipe.image_url + '")');
+    $('#'+recipe.id).css('height',imageHeight(recipe.image_url));
+    $('#'+recipe.id).click(function(){
+      recipeModal(recipe)
+    });
   }
 
   // =========== SEARCH ============= //
@@ -168,6 +201,7 @@ $(document).ready(function(){
     $('.pantry_list').slideUp();
     $('#pantry_wrapper').slideUp();
     $('.pantry_button').fadeIn(200);
+    $('.grid').html('');
 	})
 
 	
