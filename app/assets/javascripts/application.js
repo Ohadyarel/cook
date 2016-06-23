@@ -96,34 +96,79 @@ $(document).ready(function(){
     return tempImg.naturalWidth
   }
 
-  // ajax to favorite/unfavorite a recipe
-  function favoriteRecipe(recipe_id){
-    console.log('favorite')
-  }
-  // toggles the display of recipe modal and shadow
+  // fadeOut the recipe modal and shadow
   function modalHide() {
     $('.modal_shadow').fadeOut(200);
     $('.recipe_modal').fadeOut(300);
   }
-  // populates the recipe modal
+
+  // get all the current_user favorites
+  function getFavorites() {
+    $.ajax ({
+      type: "GET",
+      url: "favorites",
+      success: function (response) { 
+        console.log("success")
+        favorites = response
+      }
+    })
+  }
+
+  getFavorites();
+
+  // checks if a user favorited a recipe
+  function favorited(favorites, recipe_id){
+    for (var i=0; i<favorites.length; i++){
+      if (favorites[i].recipe_id == recipe_id){
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function unsaveClickEvent(recipe_id){
+    $('#recipe_unsave_'+recipe_id).click(function(){
+      console.log('unsave click event')
+      $.ajax ({
+        url: "favorites/" + recipe_id,
+        type: "DELETE"
+      })
+      $('#modal_favorite_'+recipe_id).html('<p id="recipe_save_'+recipe_id+'">Save Recipe For Later</p>')
+      saveClickEvent(recipe_id)
+    })
+  }
+
+  function saveClickEvent(recipe_id){
+    $('#recipe_save_'+recipe_id).click(function(){
+      console.log('save click event')
+      $.post('favorites', {recipe_id:recipe_id})
+      $('#modal_favorite_'+recipe_id).html('<p id="recipe_unsave_'+recipe_id+'">Recipe Saved, Click To Unsave</p>')
+      unsaveClickEvent(recipe_id)
+    })
+  }
+
+  // creates and populates the recipe modal
   function recipeModal(recipe) {
-    $('.recipe_title > h3').text(recipe.title);
-    $('.recipe_title > span').click(function(){
+    $('#home').append('<div class="recipe_modal" id="modal_'+recipe.id+'"><div class="recipe_header" id="modal_header_'+recipe.id+'"><div class="recipe_title" id="modal_title_'+recipe.id+'"><h3></h3><span class="glyphicon glyphicon-remove"></span></div></div><div class="recipe_body" id="modal_body_'+recipe.id+'"><ul></ul><a href="#"><p>Click here to view the instructions</p></a></div><div class="recipe_favorite" id="modal_favorite_'+recipe.id+'"></div></div>')
+    if (favorited(favorites, recipe.id)){
+      $('#modal_favorite_'+recipe.id).html('<p id="recipe_unsave_'+recipe.id+'">Recipe Saved, Click To Unsave</p>');
+    } else {
+      $('#modal_favorite_'+recipe.id).html('<p id="recipe_save_'+recipe.id+'">Save Recipe For Later</p>');
+    }
+    $('#modal_header_'+recipe.id).css('background-image','url("' + recipe.image_url + '")');
+    $('#modal_title_'+recipe.id+' > h3').text(recipe.title);
+    $('#modal_title_'+recipe.id+' > span').click(function(){
       modalHide();
     })
     $('.modal_shadow').click(function(){
       modalHide();
     })
-    $('.recipe_body > ul').html('')
-    for (var i=0; i<recipe.ingredients.length; i++) {
-      $('.recipe_body > ul').append('<li>'+ recipe.ingredients[i] +'</li>')
+    for (var i=0; i<recipe.ingredients.length; i++){
+      $('#modal_body_'+recipe.id+' > ul').append('<li>'+ recipe.ingredients[i] +'</li>')
     };
-    $('.recipe_body > a').attr('href',recipe.source_url);
-    $('.recipe_favorite').click(function(){
-      favoriteRecipe(recipe.id)
-    });
-    $('.modal_shadow').fadeIn(200);
-    $('.recipe_modal').fadeIn(300);
+    $('#modal_body_'+recipe.id+' > a').attr('href',recipe.source_url);
+    saveClickEvent(recipe.id);
+    unsaveClickEvent(recipe.id);
   }
 
   // shows the recipe to the user
@@ -131,8 +176,10 @@ $(document).ready(function(){
     $('.grid').append('<div class="grid-item" id="' + recipe.id + '"><div class="grid-title"><h3>'+ recipe.title + '</h3></div></div>');
     $('#'+recipe.id).css('background-image','url("' + recipe.image_url + '")');
     $('#'+recipe.id).css('height',imageHeight(recipe.image_url));
+    recipeModal(recipe)
     $('#'+recipe.id).click(function(){
-      recipeModal(recipe)
+      $('.modal_shadow').fadeIn(200);
+      $('#modal_'+recipe.id).fadeIn(300);
     });
   }
 

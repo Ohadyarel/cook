@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :users
   resources :recipes, only: [:index, :show]
-  resources :favorites, only: [:create, :destroy]
+  resources :favorites, only: [:index, :create, :destroy]
   resources :sessions, only: [:create, :destroy]
 
   root 'recipes#index'
