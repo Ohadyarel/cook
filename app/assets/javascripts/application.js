@@ -175,7 +175,7 @@ $(document).ready(function(){
 
   $('#home').fadeIn(1000);
 
-  $('.pantry_section').fadeIn(500);
+  $('.pantry_section').fadeIn(300);
 
   $('.pantry_header').click(function(){
     $(this).parent().find('.pantry_list').slideToggle();
@@ -189,7 +189,7 @@ $(document).ready(function(){
   $('.glyphicon-menu-up').click(function(){
     $('.pantry_list').slideUp();
     $('#pantry_wrapper').slideUp();
-    $('.pantry_button').fadeIn(200);
+    $('.pantry_button').fadeIn(300);
   });
 
 });

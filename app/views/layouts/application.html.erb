@@ -6,23 +6,37 @@
   <link href='https://fonts.googleapis.com/css?family=Arvo:400,700,400italic' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
 	<nav id="logo_nav">
-		<h1>Pantry<span>Chef</span></h1>
-		<span class="glyphicon glyphicon-menu-hamburger" id="dropdown_menu"></span>
-		<div class="menu_drop">
-			<% if !logged_in? %>
-				<%= form_tag sessions_path do %>
-					<%=text_field_tag :email, nil, :placeholder=>"Email", id: "login_username" %>
-					<%=password_field_tag :password, nil, :placeholder=> "Password", id: "login_pass" %>
-					<%=submit_tag "Log in", id:"login_button" %>
+		<a href="/" id="logo_link">
+			<h1>Pantry<span>Chef</span></h1>
+		</a>
+		
+		<div class="dropdown">
+		  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+		    <span class="glyphicon glyphicon-menu-hamburger" id="hamburger"></span>
+		  </button>
+		  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+		  	<% if !logged_in? %>
+		  		<%= form_tag sessions_path do %>
+				    <li><%= text_field_tag :email, nil, :placeholder=>"Email", id: "login_username" %></li>
+				    <li><%= password_field_tag :password, nil, :placeholder=> "Password", id: "login_pass" %></li>
+				    <li><%= submit_tag "Log in", id:"login_button" %></li>
+				    <li role="separator" class="divider"></li>
+				    <li><%= link_to "Sign Up", new_user_path %></li>
+			   <%end%>
+				<% else %>
+					<li><%= link_to "Home", root_path %></li>
+					<li><%= link_to "My Favorites", user_path(current_user.id) %></li>
+					<li><%= link_to "Account settings", edit_user_path(current_user.id) %></li>
+					<li role="separator" class="divider"></li>
+					<li><%= link_to "Log Out", session_path(current_user.id), method: "delete" %></li>
 				<%end%>
-			<% else %>
-				<%=link_to "Log Out", session_path(current_user.id), method: "delete"%>
-			<% end %>
+		  </ul>
 		</div>
 	</nav>
 	<%= flash[:alert] if flash[:alert]%>

@@ -1,3 +1,234 @@
 // Place all the styles related to the Recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$blue-color: #0662A6;
+$gold-color: #E49C38;
+$white-color: #EBE6E1;
+$green-color: #008E53;
+$pink-color: #DF4977;
+$orange-color: #DC2C22;
+
+body {
+	margin: 0;
+	background: $white-color;
+	color: $gold-color;
+	font-family: 'Arvo', serif;
+}
+
+/* === NAVBAR === */
+
+#logo_nav {
+	height: 65px;
+	// background: #393233;
+	background: $green-color;
+}
+
+#logo_link {
+	color: $white-color;
+	text-shadow: 1px 1px $gold-color;
+}
+
+#logo_link:hover {
+	color: $white-color;
+}
+
+#logo_nav h1 {
+	margin: 0;
+	padding-left: 10px;
+	padding-top: 10px;
+	font-weight: bold;
+	font-size: 2.6em;
+	display: inline-block;
+}
+
+#logo_nav h1 span{
+	font-style: italic;
+	font-weight: none;
+}
+
+.dropdown {
+	display: inline-block;
+	margin-right: 2px;
+	float: right;
+	position: relative;
+}
+
+#dropdownMenu1 {
+	background: none;
+	border: none;
+	font-size: 2.2em;
+	margin-top: 8px;
+	color: $white-color;
+}
+
+#dropdownMenu1:active {
+	outline: none;
+	box-shadow: none;
+}
+
+#hamburger {
+	text-shadow: 1px 1px $gold-color;
+}
+
+/* ==== INDEX#RECIPE ==== */
+
+#home {
+  display: none;
+}
+
+.pantry_section {
+	width: 100%;
+	display: none;
+	border-bottom: 1px solid white;
+}
+
+.pantry_header {
+	padding-left: 8px;
+	height: 40px;
+	margin: 0;
+	color: #393233;
+}
+
+.pantry_header h2 {
+	font-size: 1.3em;
+	cursor: pointer;
+}
+
+.pantry_list {
+	background: white;
+	display: none;
+}
+
+.pantry_list ul {
+	margin: 0;
+	list-style: none;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	padding-left: 8px;
+}
+
+.pantry_list ul li {
+	display: inline-block;
+	font-size: 1.1em;
+	margin: 5px 5px 0 0;
+	background: #393233;
+	color: $white-color;
+	border-radius: 4px;
+	padding: 0 5px;
+}
+
+.delete_ing:hover {
+	color: $orange-color;
+}
+
+.col-lg-6 {
+	padding-left: 0;
+	padding-bottom: 12px;
+}
+
+.pantry_form {
+	padding-left: 8px;
+}
+
+.pantry_input {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	height: 35px;
+}
+
+.add_ing {
+	margin-top: 9px;
+	margin-bottom: 5px;
+	background: #393233;
+	color: $white-color;
+	height: 35px;
+	padding-left: 8px;
+	padding-right: 8px; 
+	cursor: pointer;
+}
+
+.search_button {
+	padding-left: 8px;
+	border-bottom: 1px solid white;
+}
+
+.search_button h2 {
+	background: $gold-color;
+	color: $white-color;
+	padding: 5px 8px;
+	margin-top: 10px;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+.search_button h2:hover {
+	box-shadow: 1px 1px $green-color;
+	text-shadow: 1px 1px $green-color;
+}
+
+.search_button span {
+	color: $blue-color;
+	margin: 20px 15px;
+	font-size: 1.7em;
+	float: right;
+	cursor: pointer;
+}
+
+.pantry_button {
+	background: $blue-color;
+	color: $gold-color;
+	text-align: center;
+	border-bottom: 1px solid white;
+	display: none;
+}
+
+.pantry_button h2 {
+	font-size: 1.4em;
+	margin-top: 8px;
+	display: inline-block;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+/*SEARCH RESULTS*/
+
+/* ===== grid ===== */
+.grid {
+	margin-left: 12px;
+  max-width: 1200px;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ===== grid-item ===== */
+.grid-item {
+	margin: 10px 5px;
+	background-repeat: no-repeat;
+	background-size: cover;
+  width: 365px;
+  height: 280px;
+  float: left;
+  cursor: pointer;
+  border: 5px solid $gold-color;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);
+}
+
+.grid-item:hover {
+	box-shadow: inset 0px 0px 10px 0px rgba(0,0,0,0.7), 0px 0px 5px 0px rgba(0,0,0,0.7);
+}
+
+.grid-title {
+	background: rgba(57,50,51,0.7);
+	color: $white-color;
+}
+
+.grid-title h3 {
+	padding-left: 5px;
+}
