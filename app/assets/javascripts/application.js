@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .
 
@@ -30,10 +31,7 @@ $(document).ready(function(){
     $.ajax ({
       url: "api/ingredients/1",
       type: "DELETE",
-      data: {ing:data},
-      success: function (response) { 
-        console.log(response)
-      }
+      data: {ing:data}
     })
   }
 
@@ -108,12 +106,12 @@ $(document).ready(function(){
       type: "GET",
       url: "favorites",
       success: function (response) { 
-        console.log("success")
         favorites = response
       }
     })
   }
 
+  // invokes the function on page load
   getFavorites();
 
   // checks if a user favorited a recipe
@@ -128,7 +126,6 @@ $(document).ready(function(){
 
   function unsaveClickEvent(recipe_id){
     $('#recipe_unsave_'+recipe_id).click(function(){
-      console.log('unsave click event')
       $.ajax ({
         url: "favorites/" + recipe_id,
         type: "DELETE"
@@ -140,7 +137,6 @@ $(document).ready(function(){
 
   function saveClickEvent(recipe_id){
     $('#recipe_save_'+recipe_id).click(function(){
-      console.log('save click event')
       $.post('favorites', {recipe_id:recipe_id})
       $('#modal_favorite_'+recipe_id).html('<p id="recipe_unsave_'+recipe_id+'">Recipe Saved, Click To Unsave</p>')
       unsaveClickEvent(recipe_id)
@@ -230,7 +226,7 @@ $(document).ready(function(){
   	$.ajax ({
   		type: "GET",
       url: "api/recipes",
-      success: function (response) { 
+      success: function(response) { 
         for (var i=0; i<response.length; i++) {
           filterRecipe(response[i]);
       	}
