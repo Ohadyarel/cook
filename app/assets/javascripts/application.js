@@ -232,6 +232,8 @@ $(document).ready(function(){
         for (var i=0; i<response.length; i++) {
           filterRecipe(response[i]);
       	}
+        console.log("hide gif")
+        $('.loading_results').hide()
         $('.grid').masonry({
           itemSelector: '.grid-item',
           columnWidth: 10
@@ -247,6 +249,7 @@ $(document).ready(function(){
     $('#pantry_wrapper').slideUp();
     $('.pantry_button').fadeIn(200);
     $('.grid').html('');
+    $('.loading_results').fadeIn(1200);
 	})
 
 	
@@ -289,14 +292,6 @@ $(document).ready(function(){
       columnWidth: 10
     });
   })
-  // var temp = $('.saved_array').attr('id')
-  // console.log(temp[1])
-
-  // for (var i=0; i<favorites.length; i++){
-  //   console.log('whhhhhhhatttt')
-  //   var recipe_img = $('#recipe_header_'+favorites[i].recipe_id)
-  //   $('#recipe_header_'+favorites[i].recipe_id).css('background-image','url("' + saved_recipe.image_url + '")')
-  // }
 
 
 });

@@ -185,7 +185,6 @@ body {
 	color: $white-color;
 	text-shadow: 1px 1px $green-color;
 	text-align: center;
-	border-bottom: 1px solid white;
 	display: none;
 }
 
@@ -195,6 +194,17 @@ body {
 	display: inline-block;
 	cursor: pointer;
 	border-radius: 4px;
+}
+
+// loading icon
+
+.loading_results {
+	display: none;
+	font-size: 1.8em;
+	color: $green-color;
+	text-shadow: 1px 1px $gold-color;
+	margin-top: 40px;
+	text-align: center;
 }
 
 /*SEARCH RESULTS*/
