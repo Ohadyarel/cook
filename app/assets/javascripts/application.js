@@ -145,7 +145,7 @@ $(document).ready(function(){
 
   // creates and populates the recipe modal
   function recipeModal(recipe) {
-    $('#home').append('<div class="recipe_modal" id="modal_'+recipe.id+'"><div class="recipe_header" id="modal_header_'+recipe.id+'"><div class="recipe_title" id="modal_title_'+recipe.id+'"><h3></h3><span class="glyphicon glyphicon-remove"></span></div></div><div class="recipe_body" id="modal_body_'+recipe.id+'"><ul></ul><a href="#"><p>Click here to view the instructions</p></a></div><div class="recipe_favorite" id="modal_favorite_'+recipe.id+'"></div></div>')
+    $('#home').append('<div class="recipe_modal" id="modal_'+recipe.id+'"><div class="recipe_header" id="modal_header_'+recipe.id+'"><div class="recipe_title" id="modal_title_'+recipe.id+'"><h3></h3><span class="glyphicon glyphicon-remove"></span></div></div><div class="recipe_body" id="modal_body_'+recipe.id+'"><ul></ul><a href="#" target="_blank"><p>Click here to view the instructions</p></a></div><div class="recipe_favorite" id="modal_favorite_'+recipe.id+'"></div></div>')
     if (favorited(favorites, recipe.id)){
       $('#modal_favorite_'+recipe.id).html('<p id="recipe_unsave_'+recipe.id+'">Recipe Saved, Click To Unsave</p>');
     } else {
@@ -171,7 +171,9 @@ $(document).ready(function(){
   function display(recipe) {
     $('.grid').append('<div class="grid-item" id="' + recipe.id + '"><div class="grid-title"><h3>'+ recipe.title + '</h3></div></div>');
     $('#'+recipe.id).css('background-image','url("' + recipe.image_url + '")');
-    $('#'+recipe.id).css('height',imageHeight(recipe.image_url));
+    if (imageHeight(recipe.image_url) <= 500){
+      $('#'+recipe.id).css('height',imageHeight(recipe.image_url));
+    }
     recipeModal(recipe)
     $('#'+recipe.id).click(function(){
       $('.modal_shadow').fadeIn(200);
@@ -268,5 +270,33 @@ $(document).ready(function(){
     $('#pantry_wrapper').slideUp();
     $('.pantry_button').fadeIn(300);
   });
+
+  // ========== SHOW#USER ========== //
+  
+
+  $('.unfave_button').click(function(){
+    $(this).parent().parent().fadeOut(200);
+  })
+
+  $('.saved_img > img').on('load', function(){
+    var img_path = $(this).attr('src');
+    $(this).parent().parent().css('background-image','url('+img_path+')');
+    if (imageHeight(img_path) <= 500){
+      $(this).parent().parent().css('height',imageHeight(img_path));
+    }
+    $('.saved_grid').masonry({
+      itemSelector: '.recipe_saved',
+      columnWidth: 10
+    });
+  })
+  // var temp = $('.saved_array').attr('id')
+  // console.log(temp[1])
+
+  // for (var i=0; i<favorites.length; i++){
+  //   console.log('whhhhhhhatttt')
+  //   var recipe_img = $('#recipe_header_'+favorites[i].recipe_id)
+  //   $('#recipe_header_'+favorites[i].recipe_id).css('background-image','url("' + saved_recipe.image_url + '")')
+  // }
+
 
 });

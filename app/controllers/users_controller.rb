@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 	def show
-		@user = User.find(params[:id])
+		@user = User.find(current_user.id)
+		@favorites = current_user.favorites
+		@saves = current_user.recipes
 	end
 
 	def new
@@ -49,7 +51,6 @@ class UsersController < ApplicationController
 	def destroy
 		@user = current_user
 		@user.favorites.destroy_all
-		@user.user_categories.destroy_all
 		@user.user_ingredients.destroy_all
 		@user.destroy
 		log_out

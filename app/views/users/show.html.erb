@@ -1,4 +1,37 @@
 <div id="profile">
-	
+	<div id="profile_header">
+		<h2>Your Saved Recipes</h2>
+	</div>
+	<div class="grid saved_grid" id="saved_recipes">
+		<% @saves.each do |recipe| %>
+			<div class="recipe_saved">
+				<div class="recipe_header saved_header">
+					<div class="recipe_title saved_title">
+						<h3>
+							<%= recipe.title %>
+						</h3>
+					</div>
+					<div class="saved_img">
+						<%= image_tag(recipe.image_url) %>
+					</div>
+				</div>
+				<div class="recipe_body saved_body">
+					<ul>
+						<% recipe.ingredients.each do |ing| %>
+							<li><%= ing %></li>
+						<% end %>
+					</ul>
+					<a href="<%= recipe.source_url %>" target="_blank">
+						<p>Click here to view the instructions</p>
+					</a>
+				</div>
+				<div class="recipe_favorite">
+					<%= link_to favorite_path(recipe.id), method: :delete, remote: true, class: "unfave_button" do %>
+						<p id="recipe_unsave_<%= recipe.id %>">Unsave Recipe</p>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	</div>
 
 </div>

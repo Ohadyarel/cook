@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, except: [:index]
   resources :recipes, only: [:index, :show]
   resources :favorites, only: [:index, :create, :destroy]
   resources :sessions, only: [:create, :destroy]
