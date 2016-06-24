@@ -18,6 +18,17 @@
 
 $(document).ready(function(){
 
+  // Welcome message
+
+  if (Cookies.get('welcome') == 'yes'){
+    $('#welcome').remove();
+  }
+
+  $('#exit_welcome').click(function(){
+    $('#welcome').slideUp(300)
+    Cookies.set('welcome','yes')
+  })
+
 	// ======== PANTRY ========== //
 
   // SAVE PANTRY 
@@ -232,7 +243,6 @@ $(document).ready(function(){
         for (var i=0; i<response.length; i++) {
           filterRecipe(response[i]);
       	}
-        console.log("hide gif")
         $('.loading_results').hide()
         $('.grid').masonry({
           itemSelector: '.grid-item',
@@ -249,7 +259,7 @@ $(document).ready(function(){
     $('#pantry_wrapper').slideUp();
     $('.pantry_button').fadeIn(200);
     $('.grid').html('');
-    $('.loading_results').fadeIn(1200);
+    $('.loading_results').fadeIn(1000);
 	})
 
 	

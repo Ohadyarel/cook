@@ -1,4 +1,12 @@
 <div id="home">
+	<div id="welcome">
+		<h4>Welcome!</h4>
+		<span class="glyphicon glyphicon-remove" id="exit_welcome"></span>
+		<p>
+			We have taken the liberty to stock your pantry with some basic ingredients. Feel free to add/remove ingredients according to what you have in stock.<br>
+			Bon Appétit!
+		</p>
+	</div>
 	<div id="pantry_wrapper">
 		<% if logged_in? %>
 			<%= render partial: "user_pantry" %>
@@ -15,4 +23,4 @@
 	</div>
 	<div class="grid" id="search_results"></div>
 </div>
-<div class="modal_shadow"></div>
+
