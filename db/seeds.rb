@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 def food_response(num)
-	uri = URI("http://food2fork.com/api/search?key=9bd16e91f2d1df0015d44136298b8536&q=bacon&page=#{num}")
+	uri = URI("http://food2fork.com/api/search?key=9bd16e91f2d1df0015d44136298b8536&q=shrimp&page=#{num}")
 	response = Net::HTTP.get(uri)
 	JSON.parse(response)
 end
@@ -24,7 +24,7 @@ def recipe_get(recipe_id)
 end
 
 
-result = food_response(4)
+result = food_response(1)
 result['recipes'].each do |recipe|
 	recipe_get(recipe['recipe_id'])
 end

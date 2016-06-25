@@ -252,12 +252,30 @@ $(document).ready(function(){
   	})
   }
 
+  // DESKTOP VIEW
+  // Updates the search button click event if window is wider than 1024
+  function desktopSearchDisplay(winSize) {
+    if (winSize < 1024){
+      $('.pantry_list').slideUp();
+      $('#pantry_wrapper').slideUp();
+      $('.pantry_button').fadeIn(200);
+    } else {
+      $('.pantry_button').remove();
+    }
+  }
+
+  // listen to changes in the window width
+  $(window).resize(function (){
+    if ($(window).innerWidth() >= 1024) {
+      $('#pantry_wrapper').show();
+      $('.pantry_button').hide();
+    }
+  })
+
 	// Click event on search button to invoke pantryArray
 	$('.search_title').click(function(){
-		recipeIndex()
-    $('.pantry_list').slideUp();
-    $('#pantry_wrapper').slideUp();
-    $('.pantry_button').fadeIn(200);
+		recipeIndex();
+    desktopSearchDisplay($(window).innerWidth());
     $('.grid').html('');
     $('.loading_results').fadeIn(1000);
 	})
@@ -286,6 +304,7 @@ $(document).ready(function(){
 
   // ========== SHOW#USER ========== //
   
+  $('#profile').fadeIn(1000);
 
   $('.unfave_button').click(function(){
     $(this).parent().parent().fadeOut(200);

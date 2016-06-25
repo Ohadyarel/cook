@@ -114,7 +114,7 @@ body {
 
 .pantry_header {
 	padding-left: 8px;
-	height: 40px;
+	height: 38px;
 	margin: 0;
 	color: #393233;
 }
@@ -241,8 +241,9 @@ body {
 
 /* ===== grid ===== */
 .grid {
-	margin-left: 12px;
+	// margin-left: 12px;
   max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* clearfix */
@@ -257,7 +258,7 @@ body {
 	margin: 10px 5px;
 	background-repeat: no-repeat;
 	background-size: cover;
-  width: 365px;
+  width: 98%;
   height: 500px;
   float: left;
   cursor: pointer;
@@ -360,6 +361,10 @@ body {
 
 // show#user - list of favorited recipes
 
+#profile {
+	display: none;
+}
+
 #profile_header {
 	background: $gold-color;
 	color: $white-color;
@@ -371,7 +376,7 @@ body {
 	margin-top: 0;
 	padding: 5px 0;
 	font-size: 1.8em;
-	max-width: 90%;
+	width: 100%;
 }
 
 .recipe_saved {
@@ -397,4 +402,81 @@ body {
 
 .recipe_favorite a:hover {
 	text-decoration: none;
+}
+
+// RESPONSIVENESS
+
+@media (min-width: 435px) {
+	.grid {
+		margin: 5px 3px;
+	}
+	.grid-item {
+		width: 365px;
+	}
+	.recipe_modal {
+		width: 500px;
+	}
+	.recipe_header {
+		height: 350px;
+	}
+} 
+
+@media (min-width: 1024px) {
+	#pantry_wrapper {
+		background: $white-color;
+		position: absolute;
+		width: 330px;
+		height: 595px;
+		left: 0;
+		border-right: 1px solid white;
+		border-bottom: 1px solid white;
+	}
+
+	.search_button {
+		border: none;
+	}
+
+	.search_button span {
+		display: none;
+	}
+
+	.recipe_modal {
+		top: 3px;
+	}
+
+	.pantry_button {
+		display: none;
+	}
+
+	.grid {
+		float: right;
+		width: 67%;
+	}
+
+	.grid-item {
+		width: 320px;
+	}
+
+	.saved_grid {
+		width: 100%;
+	}
+
+	.loading_results {
+		width: 70%;
+		float: right;
+	}
+}
+
+@media (min-width: 1225px) {
+	.grid {
+		width: 73%;
+	}
+
+	.loading_results {
+		width: 75%;
+	}
+
+	.grid-item {
+		width: 300px;
+	}
 }
