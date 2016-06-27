@@ -1,0 +1,17 @@
+<div id="landing_shadow"></div>
+<div id="landing_box">
+	<a href="/recipes" id="logo_link">
+		<h1>Pantry<span>Chef</span></h1>
+	</a>
+	<%= form_tag sessions_path do %>
+		<%= text_field_tag :email, nil, :placeholder=>"Enter Your Email", id: "login_username" %>
+		<%= password_field_tag :password, nil, :placeholder=> "Enter Your Password", id: "login_pass" %>
+		<%= submit_tag "Log in", id:"login_button" %>
+	<% end %>
+	<p>
+		Save your search preferences and favorite recipes by <%= link_to "clicking here to sign up", new_user_path %>.
+	</p>
+	<p id="guest">
+		<%= link_to "Continue as a guest >>>", recipes_path %>
+	</p>
+</div>

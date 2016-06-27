@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+	def new
+		redirect_to recipes_path if logged_in?
+	end
+
 	def create
 		@user = User.where(email: params[:email]).first
 		if @user && @user.authenticate(params[:password])
@@ -14,6 +18,6 @@ class SessionsController < ApplicationController
 	def destroy
 		log_out
 		flash[:notice] = "logged out successfully."
-		redirect_to :back
+		redirect_to :root
 	end
 end

@@ -8,14 +8,6 @@ class FavoritesController < ApplicationController
 		if @favorite.save
 			head 204
 		end
-		# respond_to do |format|
-		# 	if @favorite.save
-		# 		@recipe = Recipe.find(params[:recipe_id])
-		# 		format.js { render layout: false, content_type: 'text/javascript' }
-		# 	else
-		# 		format.html { redirect_to :back }
-		# 	end
-		# end
 	end
 
 	def destroy
@@ -23,13 +15,5 @@ class FavoritesController < ApplicationController
 		if @favorite.destroy
 			head 204
 		end
-		# respond_to do |format|
-		# 	if @favorite.destroy
-		# 		@recipe = Recipe.find(params[:id])
-		# 		format.js { render layout: false, content_type: 'text/javascript' }
-		# 	else
-		# 		format.html { redirect_to :back }
-		# 	end 
-		# end
 	end
 end

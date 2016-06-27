@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   resources :users, except: [:index]
   resources :recipes, only: [:index, :show]
   resources :favorites, only: [:index, :create, :destroy]
-  resources :sessions, only: [:create, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
 
-  root 'recipes#index'
+  root 'sessions#new'
 
   namespace :api do
     resources :recipes, only: [:index,:show]

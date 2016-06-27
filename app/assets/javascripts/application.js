@@ -274,7 +274,8 @@ $(document).ready(function(){
 
 	// Click event on search button to invoke pantryArray
 	$('.search_title').click(function(){
-		recipeIndex();
+    $('#home').find('.recipe_modal').remove()
+    recipeIndex();
     desktopSearchDisplay($(window).innerWidth());
     $('.grid').html('');
     $('.loading_results').fadeIn(1000);
