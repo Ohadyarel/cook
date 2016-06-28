@@ -244,6 +244,7 @@ $(document).ready(function(){
           filterRecipe(response[i]);
       	}
         $('.loading_results').hide()
+        $('.grid').masonry('destroy')
         $('.grid').masonry({
           itemSelector: '.grid-item',
           columnWidth: 10
