@@ -2,6 +2,6 @@
 
 New York Code + Design Academy // Web Development Intensive // Final Project
 
-Build with Ruby on Rails, with a large use of JavaScript, PantryChef takes all the ingredients in you pantry and finds recipes you can cook using only those ingredients.
+Built with Ruby on Rails, with a large use of JavaScript, PantryChef takes all the ingredients in you pantry and finds recipes you can cook using only those ingredients.
 
 Developed and designed by Ohad Yarel.
