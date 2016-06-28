@@ -1,7 +1,7 @@
 == PantryChef
 
-New York Code + Design Academy // Web Development Intensive // Final Project
+PantryChef takes all the ingredients you have in your pantry and finds recipes you can cook using only those ingredients.
 
-Built with Ruby on Rails, with a large use of JavaScript, PantryChef takes all the ingredients in you pantry and finds recipes you can cook using only those ingredients.
 
+Built with Ruby on Rails.
 Developed and designed by Ohad Yarel.
