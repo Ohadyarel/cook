@@ -589,7 +589,7 @@ body {
 
 // sign up form for users new and edit
 
-#new_user {
+.new_user, .edit_user {
 	width: 93%;
 	max-width: 600px;
 	margin: 0 auto;
