@@ -23,13 +23,13 @@
 		  </button>
 		  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
 		  	<% if !logged_in? %>
-		  		<%= form_tag sessions_path do %>
+		  		<%= form_tag sessions_path, id:"login_dd_form" do %>
 				    <li><%= text_field_tag :email, nil, :placeholder=>"Email", id: "login_username" %></li>
 				    <li><%= password_field_tag :password, nil, :placeholder=> "Password", id: "dd_login" %></li>
-				    <li><%= submit_tag "Log in", id:"dd_login" %></li>
+				    <li><%= submit_tag "Log in", id:"dd_login_submit" %></li>
 			   <%end%>
 				    <li role="separator" class="divider"></li>
-				    <li><%= link_to "Sign Up", new_user_path %></li>
+				    <li><%= link_to "Not registered? Sign up now", new_user_path %></li>
 				<% else %>
 					<li><%= link_to "Pantry", recipes_path %></li>
 					<li><%= link_to "Saved Recipes", user_path(current_user.id) %></li>

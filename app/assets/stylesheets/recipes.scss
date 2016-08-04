@@ -70,6 +70,67 @@ body {
 	text-shadow: 1px 1px $gold-color;
 }
 
+#login_dd_form {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#dd_login {
+	display: block;
+	width: 90%;
+	margin: 25px auto;
+	font-size: 1.2em;
+	background: none;
+	border: none;
+	border-bottom: 2px dotted $green-color;
+	color: $gold-color;
+}
+
+::-webkit-input-placeholder {
+    color:$gold-color;
+}
+
+::-moz-placeholder {
+    color:$gold-color;
+}
+
+::-ms-placeholder {
+    color:$gold-color;
+}
+
+::placeholder {
+    color:$gold-color;
+}
+
+
+#dd_login:focus {
+	outline:none;
+	border-bottom:
+	2px solid $green-color;
+}
+
+#dd_login_submit {
+	font-size: 1.2em;
+	width: 100px;
+	margin: 0 auto;
+	border: none;
+	border-radius: 4px;
+	background: $green-color;
+	color: $white-color;
+	text-shadow: 1px 1px $gold-color;
+	box-shadow: 1px 1px $gold-color;
+}
+
+#dd_login_submit:hover {
+	background: $gold-color;
+	text-shadow: 1px 1px $green-color;
+	box-shadow: 1px 1px $green-color;
+}
+
+#dd_login_submit:focus {
+	outline: none;
+}
+
 
 /* ==== ROOT - SESSIONS#NEW ==== */
 
@@ -88,7 +149,7 @@ body {
 	border: 5px solid $green-color;
 	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.7);
 	position: fixed;
-	width: 90%;
+	width: 93%;
 	max-width: 500px;
 	margin: 20px auto;
 	top: 20px;
