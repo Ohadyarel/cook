@@ -587,6 +587,58 @@ body {
 }
 
 
+// sign up form for users new and edit
+
+#new_user {
+	width: 93%;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.user_form_fields {
+	margin: 25px 0;
+	display: block;
+	width: 100%;
+	font-size: 1.2em;
+	background: none;
+	border: none;
+	border-bottom: 2px dotted $green-color;
+	color: $gold-color;
+}
+
+.user_form_fields:focus {
+	outline:none;
+	border-bottom:
+	2px solid $green-color;
+}
+
+
+#user_submit_button{
+	font-size: 1.2em;
+	width: 170px;
+	margin: 0 auto;
+	border: none;
+	border-radius: 4px;
+	background: $green-color;
+	color: $white-color;
+	text-shadow: 1px 1px $gold-color;
+	box-shadow: 1px 1px $gold-color;
+}
+
+
+#user_submit_button:hover {
+	background: $gold-color;
+	text-shadow: 1px 1px $green-color;
+	box-shadow: 1px 1px $green-color;
+}
+
+#user_submit_button:focus {
+	outline: none;
+}
+
+
+
+
 
 // RESPONSIVENESS
 

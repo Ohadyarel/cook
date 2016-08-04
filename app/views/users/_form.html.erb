@@ -1,8 +1,8 @@
 <!-- form to create and update a user -->
 <%= form_for @user do |f| %>
-	<%=f.text_field :name, placeholder: "Full Name" %>
-	<%=f.password_field :password, placeholder: "Password" %>
-	<%=f.password_field :password_confirmation, placeholder: "Confirm Password" %>
-	<%=f.email_field :email, placeholder: "Email" %>
-	<%=f.submit %>
+	<%=f.text_field :name, placeholder: "Full Name", class:"user_form_fields" %>
+	<%=f.password_field :password, placeholder: "Password", class:"user_form_fields" %>
+	<%=f.password_field :password_confirmation, placeholder: "Confirm Password", class:"user_form_fields" %>
+	<%=f.email_field :email, placeholder: "Email", class:"user_form_fields" %>
+	<%=f.submit id:"user_submit_button" %>
 <% end %>
