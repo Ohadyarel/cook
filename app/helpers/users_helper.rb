@@ -8,7 +8,7 @@ module UsersHelper
 
 	# associates a new user with the default ingredients
 	def setup_pantry(user)
-		58.times do |i|
+		59.times do |i|
 			if i >= 1 and i <= 11
 				UserIngredient.create(user_id: user.id, ingredient_id: i, category_id: 1)
 			elsif i >= 12 and i <= 25
